@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Bhavya Singh — Portfolio</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0a;color:#fff;font-family:'Inter',sans-serif;overflow-x:hidden}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:#111}::-webkit-scrollbar-thumb{background:#e50914}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 3rem;display:flex;align-items:center;gap:2rem;background:linear-gradient(to bottom,rgba(0,0,0,0.9),transparent)}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:#e50914;letter-spacing:0.05em;white-space:nowrap}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.8rem;transition:color 0.2s}
+.nav-links a:hover{color:#fff}
+
+.hero{height:100vh;position:relative;display:flex;align-items:flex-end;padding:0 3rem 5rem;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(to right,#0a0a0a 30%,transparent 70%),linear-gradient(to top,#0a0a0a 10%,transparent 50%),radial-gradient(ellipse at 70% 40%,#1a0000 0%,#0a0a0a 60%)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(229,9,20,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(229,9,20,0.03) 1px,transparent 1px);background-size:60px 60px;opacity:0.5}
+.floating-cards{position:absolute;right:0;top:0;bottom:0;width:55%;display:flex;align-items:center;justify-content:center;perspective:800px}
+.card-stack{position:relative;width:100%;height:100%;transform-style:preserve-3d}
+.stack-card{position:absolute;border-radius:8px;overflow:hidden;border:1px solid rgba(229,9,20,0.2)}
+.sc1{width:260px;height:160px;right:8%;top:12%;background:linear-gradient(135deg,#1a0a0a,#2d1111);transform:rotate(-5deg)}
+.sc2{width:220px;height:140px;right:30%;top:22%;background:linear-gradient(135deg,#0a1a0a,#112d11);transform:rotate(3deg)}
+.sc3{width:240px;height:150px;right:12%;bottom:22%;background:linear-gradient(135deg,#0a0a1a,#11112d);transform:rotate(-2deg)}
+.sc4{width:200px;height:130px;right:35%;bottom:30%;background:linear-gradient(135deg,#1a1a0a,#2d2d11);transform:rotate(6deg)}
+.sc5{width:180px;height:120px;right:55%;top:45%;background:linear-gradient(135deg,#05101a,#0f2535);transform:rotate(-4deg)}
+.stack-card-label{padding:1rem;font-size:0.7rem;color:rgba(255,255,255,0.5);letter-spacing:0.1em;text-transform:uppercase}
+.stack-card-title{padding:0 1rem;font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:#fff}
+
+.hero-content{position:relative;z-index:2;max-width:550px}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(229,9,20,0.15);border:1px solid rgba(229,9,20,0.3);padding:0.35rem 0.85rem;border-radius:2px;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:#e50914;margin-bottom:1.25rem}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,7vw,6.5rem);line-height:0.95;margin-bottom:0.5rem;letter-spacing:0.02em}
+.hero-title span{color:#e50914}
+.hero-subtitle{font-size:0.9rem;color:rgba(255,255,255,0.5);margin-bottom:0.5rem;letter-spacing:0.05em}
+.hero-desc{font-size:0.85rem;line-height:1.7;color:rgba(255,255,255,0.45);max-width:420px;margin-bottom:2rem;font-weight:300}
+.hero-btns{display:flex;gap:0.75rem;flex-wrap:wrap}
+.btn-play{display:flex;align-items:center;gap:0.6rem;background:#fff;color:#000;padding:0.65rem 1.75rem;font-size:0.85rem;font-weight:600;border:none;cursor:pointer;border-radius:3px;text-decoration:none;transition:background 0.15s}
+.btn-play:hover{background:rgba(255,255,255,0.8)}
+.btn-info{display:flex;align-items:center;gap:0.6rem;background:rgba(109,109,110,0.7);color:#fff;padding:0.65rem 1.75rem;font-size:0.85rem;font-weight:500;border:none;cursor:pointer;border-radius:3px;text-decoration:none;transition:background 0.15s}
+.btn-info:hover{background:rgba(109,109,110,0.9)}
+
+.row-section{padding:2rem 3rem}
+.row-label{font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:#e50914;margin-bottom:0.4rem}
+.row-title{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.05em;margin-bottom:1.25rem;color:rgba(255,255,255,0.9)}
+
+.projects-row{display:flex;gap:0.75rem;overflow-x:auto;padding-bottom:0.5rem;scrollbar-width:thin;scrollbar-color:#e50914 #111}
+.proj-card{min-width:220px;border-radius:4px;overflow:hidden;cursor:pointer;position:relative;flex-shrink:0;transition:transform 0.25s,box-shadow 0.25s;border:1px solid rgba(255,255,255,0.06)}
+.proj-card:hover{transform:scale(1.06);box-shadow:0 8px 32px rgba(229,9,20,0.25);z-index:10;border-color:rgba(229,9,20,0.4)}
+.proj-thumb{height:130px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.proj-thumb-icon{font-size:2.5rem;color:rgba(255,255,255,0.6)}
+.proj-thumb-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.8),transparent)}
+.proj-info{padding:0.75rem;background:#141414}
+.proj-name{font-size:0.8rem;font-weight:600;margin-bottom:0.25rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.proj-stack{font-size:0.65rem;color:rgba(255,255,255,0.4);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.proj-badge{position:absolute;top:0.5rem;left:0.5rem;background:#e50914;font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.2rem 0.45rem;border-radius:2px;font-weight:600}
+
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:200;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.2s}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{background:#141414;border-radius:8px;width:min(680px,92vw);max-height:85vh;overflow-y:auto;position:relative;border:1px solid rgba(255,255,255,0.1)}
+.modal-hero{height:220px;display:flex;align-items:flex-end;padding:1.5rem;position:relative;overflow:hidden}
+.modal-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,#141414 20%,transparent)}
+.modal-close{position:absolute;top:1rem;right:1rem;background:rgba(0,0,0,0.6);border:none;color:#fff;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;z-index:10;transition:background 0.15s}
+.modal-close:hover{background:rgba(0,0,0,0.9)}
+.modal-body{padding:1.5rem}
+.modal-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;position:relative;z-index:2;margin-bottom:0.25rem}
+.modal-meta{font-size:0.7rem;color:rgba(255,255,255,0.4);letter-spacing:0.1em;text-transform:uppercase;position:relative;z-index:2}
+.modal-desc{font-size:0.85rem;line-height:1.75;color:rgba(255,255,255,0.65);margin-bottom:1.25rem;font-weight:300}
+.modal-points{list-style:none;margin-bottom:1.5rem}
+.modal-points li{font-size:0.8rem;line-height:1.6;color:rgba(255,255,255,0.55);padding:0.4rem 0;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;gap:0.6rem}
+.modal-points li::before{content:'▸';color:#e50914;flex-shrink:0}
+.modal-tags{display:flex;flex-wrap:wrap;gap:0.4rem}
+.modal-tag{font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.25rem 0.65rem;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.5);border-radius:2px}
+.modal-actions{display:flex;gap:0.75rem;margin-top:1.25rem}
+
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:0.75rem}
+.skill-card{background:#141414;border:1px solid rgba(255,255,255,0.06);border-radius:4px;padding:1rem;text-align:center;transition:border-color 0.2s,transform 0.2s}
+.skill-card:hover{border-color:rgba(229,9,20,0.4);transform:translateY(-2px)}
+.skill-card i{font-size:1.4rem;color:#e50914;display:block;margin-bottom:0.5rem}
+.skill-card span{font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.5)}
+
+.profile-section{padding:3rem;display:grid;grid-template-columns:auto 1fr;gap:2.5rem;align-items:center;background:#111;margin:2rem 3rem;border-radius:4px;border:1px solid rgba(255,255,255,0.06)}
+.profile-avatar{width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,#e50914,#831010);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:2.8rem;flex-shrink:0}
+.profile-name{font-family:'Bebas Neue',sans-serif;font-size:2rem;margin-bottom:0.25rem}
+.profile-role{font-size:0.8rem;color:#e50914;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.75rem}
+.profile-bio{font-size:0.82rem;line-height:1.7;color:rgba(255,255,255,0.5);font-weight:300;max-width:560px}
+.profile-stats{display:flex;gap:2rem;margin-top:1.25rem}
+.stat{text-align:center}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:#e50914;line-height:1}
+.stat-label{font-size:0.65rem;color:rgba(255,255,255,0.35);letter-spacing:0.1em;text-transform:uppercase;margin-top:0.2rem}
+
+.achievements-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.75rem}
+.ach-card{background:#141414;border:1px solid rgba(255,255,255,0.06);border-radius:4px;padding:1.25rem;transition:border-color 0.2s}
+.ach-card:hover{border-color:rgba(229,9,20,0.3)}
+.ach-icon{font-size:1.2rem;color:#e50914;margin-bottom:0.6rem}
+.ach-title{font-size:0.82rem;font-weight:600;margin-bottom:0.35rem}
+.ach-desc{font-size:0.72rem;color:rgba(255,255,255,0.4);line-height:1.5;font-weight:300}
+
+footer{padding:2rem 3rem;border-top:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{color:rgba(255,255,255,0.35);text-decoration:none;font-size:0.75rem;letter-spacing:0.08em;transition:color 0.2s;display:flex;align-items:center;gap:0.35rem}
+.footer-links a:hover{color:#e50914}
+footer p{font-size:0.72rem;color:rgba(255,255,255,0.2)}
+
+@media(max-width:640px){
+  nav{padding:1rem 1.25rem}.nav-links{display:none}
+  .hero{padding:0 1.25rem 4rem}.floating-cards{display:none}
+  .row-section{padding:1.5rem 1.25rem}
+  .profile-section{padding:1.5rem;grid-template-columns:1fr;gap:1.25rem;margin:1rem 1.25rem}
+  .profile-stats{gap:1rem;flex-wrap:wrap}
+  footer{padding:1.5rem 1.25rem;flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">BHAVYA</div>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="floating-cards">
+    <div class="card-stack">
+      <div class="stack-card sc1"><div class="stack-card-label">Featured Project</div><div class="stack-card-title">ANALYSTA</div></div>
+      <div class="stack-card sc2"><div class="stack-card-label">Healthcare App</div><div class="stack-card-title">VITALHUB</div></div>
+      <div class="stack-card sc3"><div class="stack-card-label">AI Platform</div><div class="stack-card-title">GLOBE</div></div>
+      <div class="stack-card sc4"><div class="stack-card-label">96% Accuracy</div><div class="stack-card-title">HEART PRED.</div></div>
+      <div class="stack-card sc5"><div class="stack-card-label">Accessibility</div><div class="stack-card-title">CODE WHISPER</div></div>
+    </div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge"><i class="ti ti-player-play"></i> Now Streaming</div>
+    <div class="hero-title">BHAVYA<br><span>SINGH</span></div>
+    <div class="hero-subtitle">AI/ML Engineer · Full-Stack Developer · UI/UX Designer</div>
+    <div class="hero-desc">Published researcher, IIT Bombay intern, and 3rd-year B.Tech student at VIT Bhopal — building intelligent systems and beautiful interfaces.</div>
+    <div class="hero-btns">
+      <a class="btn-play" href="https://github.com/BhavyaSingh1104" target="_blank"><i class="ti ti-player-play"></i> View GitHub</a>
+      <a class="btn-info" href="https://www.behance.net/roshnigupta22" target="_blank"><i class="ti ti-info-circle"></i> Behance</a>
+    </div>
+  </div>
+</div>
+
+<div id="projects" class="row-section">
+  <div class="row-label">Original Projects</div>
+  <div class="row-title">MY PRODUCTIONS</div>
+  <div class="projects-row" id="projects-row"></div>
+</div>
+
+<div id="about">
+  <div class="profile-section">
+    <div class="profile-avatar">BS</div>
+    <div>
+      <div class="profile-name">BHAVYA SINGH</div>
+      <div class="profile-role">AI/ML · Full-Stack · Design · Research</div>
+      <div class="profile-bio">A motivated 3rd-year undergraduate in AI & ML at VIT Bhopal University. Published in a peer-reviewed international journal as a 2nd-year student for AI-driven stock market forecasting. Competitively selected as Graphic Design Intern at IIT Bombay (FOSSEE) 2026. Passionate about end-to-end systems — from data pipelines and ML models to production applications and human-centred design.</div>
+      <div class="profile-stats">
+        <div class="stat"><div class="stat-num">5</div><div class="stat-label">Projects</div></div>
+        <div class="stat"><div class="stat-num">1</div><div class="stat-label">Publication</div></div>
+        <div class="stat"><div class="stat-num">3</div><div class="stat-label">Internships</div></div>
+        <div class="stat"><div class="stat-num">8.12</div><div class="stat-label">CGPA</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row-section">
+  <div class="row-label">Highlights</div>
+  <div class="row-title">ACHIEVEMENTS</div>
+  <div class="achievements-row">
+    <div class="ach-card"><div class="ach-icon"><i class="ti ti-book"></i></div><div class="ach-title">Published Researcher</div><div class="ach-desc">Lead author of Analysta in IJARESM (2025), accepted through peer review as a 2nd-year undergraduate.</div></div>
+    <div class="ach-card"><div class="ach-icon"><i class="ti ti-building"></i></div><div class="ach-title">IIT Bombay Intern</div><div class="ach-desc">Competitively selected as Graphic Design Intern at FOSSEE, IIT Bombay 2026 from a national pool.</div></div>
+    <div class="ach-card"><div class="ach-icon"><i class="ti ti-certificate"></i></div><div class="ach-title">96% ML Accuracy</div><div class="ach-desc">Achieved 96% classification accuracy on Heart Disease Prediction via Random Forest + 5-fold CV.</div></div>
+    <div class="ach-card"><div class="ach-icon"><i class="ti ti-accessible"></i></div><div class="ach-title">Accessibility Advocate</div><div class="ach-desc">Built Code Whisper — WCAG 2.1 AA platform bridging coding education for 250M+ visually impaired individuals.</div></div>
+  </div>
+</div>
+
+<div id="skills" class="row-section">
+  <div class="row-label">Toolkit</div>
+  <div class="row-title">SKILLS & TECHNOLOGIES</div>
+  <div class="skills-grid">
+    <div class="skill-card"><i class="ti ti-brain"></i><span>Machine Learning</span></div>
+    <div class="skill-card"><i class="ti ti-brand-python"></i><span>Python</span></div>
+    <div class="skill-card"><i class="ti ti-brand-react"></i><span>React JS</span></div>
+    <div class="skill-card"><i class="ti ti-brand-javascript"></i><span>JavaScript</span></div>
+    <div class="skill-card"><i class="ti ti-brand-html5"></i><span>HTML / CSS</span></div>
+    <div class="skill-card"><i class="ti ti-brand-figma"></i><span>Figma</span></div>
+    <div class="skill-card"><i class="ti ti-cube-3d"></i><span>Blender 3D</span></div>
+    <div class="skill-card"><i class="ti ti-chart-line"></i><span>Data Analytics</span></div>
+    <div class="skill-card"><i class="ti ti-robot"></i><span>Generative AI</span></div>
+    <div class="skill-card"><i class="ti ti-brand-github"></i><span>Git & GitHub</span></div>
+    <div class="skill-card"><i class="ti ti-database"></i><span>REST APIs</span></div>
+    <div class="skill-card"><i class="ti ti-photo-edit"></i><span>Adobe Suite</span></div>
+  </div>
+</div>
+
+<footer>
+  <div class="nav-logo" style="font-size:1.4rem">BHAVYA</div>
+  <div class="footer-links">
+    <a href="https://github.com/BhavyaSingh1104" target="_blank"><i class="ti ti-brand-github"></i> GitHub</a>
+    <a href="https://www.behance.net/roshnigupta22" target="_blank"><i class="ti ti-brand-behance"></i> Behance</a>
+    <a href="mailto:bhavyasinghnh@gmail.com"><i class="ti ti-mail"></i> Email</a>
+    <a href="https://linkedin.com/in/bhavya-singh-a771a0249" target="_blank"><i class="ti ti-brand-linkedin"></i> LinkedIn</a>
+  </div>
+  <p>VIT Bhopal University · AI & ML · 2027</p>
+</footer>
+
+<div class="modal-overlay" id="modal" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-hero" id="modal-hero">
+      <div class="modal-hero-overlay"></div>
+      <button class="modal-close" onclick="closeModalDirect()"><i class="ti ti-x"></i></button>
+      <div style="position:relative;z-index:2">
+        <div class="modal-title" id="modal-title"></div>
+        <div class="modal-meta" id="modal-meta"></div>
+      </div>
+    </div>
+    <div class="modal-body">
+      <p class="modal-desc" id="modal-desc"></p>
+      <ul class="modal-points" id="modal-points"></ul>
+      <div class="modal-tags" id="modal-tags"></div>
+      <div class="modal-actions" id="modal-actions"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const projects = [
+  {
+    title:"ANALYSTA", badge:"Published",
+    meta:"Research · LSTM · Time-Series · IJARESM 2025",
+    gradient:"linear-gradient(135deg,#1a0505,#3d0f0f)",
+    icon:"ti-chart-line",
+    desc:"An AI-powered stock market forecasting platform built with LSTM neural networks. Published in an international peer-reviewed journal (IJARESM, 2025) — written as a 2nd-year undergraduate.",
+    points:[
+      "Architected LSTM-based predictive model for multi-index stock market trend forecasting",
+      "Rigorous data cleaning, normalisation & feature engineering on multi-year financial datasets",
+      "Evaluated with RMSE, MAE & directional accuracy; ablation studies vs ARIMA baselines"
+    ],
+    tags:["Python","LSTM","TensorFlow","Time-Series","Pandas","NumPy"],
+    link:"https://github.com/BhavyaSingh1104"
+  },
+  {
+    title:"VITALHUB", badge:"Full-Stack",
+    meta:"Healthcare App · Java · Web Technologies",
+    gradient:"linear-gradient(135deg,#051a05,#0f3d0f)",
+    icon:"ti-heart-rate-monitor",
+    desc:"A full-stack mobile healthcare application providing real-time disease diagnostics, symptom tracking, and evidence-based home remedy suggestions.",
+    points:[
+      "Real-time disease diagnostics and symptom tracking for common conditions",
+      "Integrated comprehensive medical database APIs with error handling & fallback content",
+      "Full-stack mobile app built in Java with HTML/CSS/JavaScript frontend"
+    ],
+    tags:["Java","HTML","CSS","JavaScript","Medical APIs"],
+    link:"https://github.com/BhavyaSingh1104"
+  },
+  {
+    title:"GLOBE", badge:"AI Platform",
+    meta:"News · Markets · Weather · Sports · AI APIs",
+    gradient:"linear-gradient(135deg,#05051a,#0f0f3d)",
+    icon:"ti-world",
+    desc:"An AI-driven current affairs platform aggregating real-time updates across news, financial markets, weather, sports and entertainment into a single intelligent interface.",
+    points:[
+      "Unified platform aggregating real-time news, markets, weather & sports data",
+      "Smart content ranking & personalisation logic to reduce information overload",
+      "Built with web technologies & AI APIs for dynamic intelligent data feeds"
+    ],
+    tags:["JavaScript","AI APIs","Web Dev","Data Feeds","Personalisation"],
+    link:"https://github.com/BhavyaSingh1104"
+  },
+  {
+    title:"HEART PREDICTOR", badge:"96% Accuracy",
+    meta:"ML · Python · Scikit-learn · UCI Dataset",
+    gradient:"linear-gradient(135deg,#1a0a05,#3d1f0f)",
+    icon:"ti-activity-heartbeat",
+    desc:"A supervised ML pipeline combining Random Forest and Logistic Regression to predict cardiovascular risk from 13 clinical parameters, achieving 96% classification accuracy.",
+    points:[
+      "Engineered pipeline combining Random Forest + Logistic Regression classifiers",
+      "Achieved 96% accuracy via 5-fold cross-validation & GridSearchCV hyperparameter tuning",
+      "Feature importance analysis to identify strongest cardiovascular risk predictors"
+    ],
+    tags:["Python","Scikit-learn","Random Forest","Pandas","NumPy","UCI Dataset"],
+    link:"https://github.com/BhavyaSingh1104"
+  },
+  {
+    title:"CODE WHISPER", badge:"Social Impact",
+    meta:"Accessibility · EdTech · WCAG 2.1 AA · Audio-First",
+    gradient:"linear-gradient(135deg,#05101a,#0f2535)",
+    icon:"ti-ear",
+    desc:"An accessibility-first coding education platform designed to empower visually impaired individuals to learn programming — reimagining the entire experience through audio, screen readers, and haptic feedback. Bridging the gap for 250M+ visually impaired people worldwide.",
+    points:[
+      "Fully WCAG 2.1 AA-compliant interface with NVDA/JAWS screen reader support and keyboard-only navigation",
+      "Text-to-speech engine narrates code structure, indentation logic & syntax in natural language",
+      "Audio-feedback code editor where errors and suggestions are communicated through descriptive voice responses",
+      "Progressive curriculum from foundational concepts up to real project-building exercises",
+      "Community forum & peer support system enabling visually impaired learners to collaborate and mentor each other"
+    ],
+    tags:["WCAG 2.1","Accessibility","TTS Engine","JavaScript","HTML","CSS","EdTech"],
+    link:"https://github.com/BhavyaSingh1104"
+  }
+];
+
+function renderProjects(){
+  const row = document.getElementById('projects-row');
+  row.innerHTML = projects.map((p,i) => `
+    <div class="proj-card" onclick="openModal(${i})">
+      <div class="proj-thumb" style="background:${p.gradient}">
+        <i class="ti ${p.icon} proj-thumb-icon"></i>
+        <div class="proj-thumb-overlay"></div>
+      </div>
+      ${p.badge ? `<div class="proj-badge">${p.badge}</div>` : ''}
+      <div class="proj-info">
+        <div class="proj-name">${p.title}</div>
+        <div class="proj-stack">${p.tags.slice(0,3).join(' · ')}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function openModal(i){
+  const p = projects[i];
+  document.getElementById('modal-title').textContent = p.title;
+  document.getElementById('modal-meta').textContent = p.meta;
+  document.getElementById('modal-desc').textContent = p.desc;
+  document.getElementById('modal-hero').style.background = p.gradient;
+  document.getElementById('modal-points').innerHTML = p.points.map(pt => `<li>${pt}</li>`).join('');
+  document.getElementById('modal-tags').innerHTML = p.tags.map(t => `<span class="modal-tag">${t}</span>`).join('');
+  document.getElementById('modal-actions').innerHTML = `<a class="btn-play" href="${p.link}" target="_blank"><i class="ti ti-player-play"></i> View Project</a>`;
+  document.getElementById('modal').classList.add('open');
+}
+
+function closeModal(e){ if(e.target === document.getElementById('modal')) closeModalDirect(); }
+function closeModalDirect(){ document.getElementById('modal').classList.remove('open'); }
+
+renderProjects();
+</script>
+</body>
+</html>
